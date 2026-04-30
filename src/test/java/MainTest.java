@@ -98,7 +98,7 @@ class MainTest {
     }
 
     // Test cases for isValid method
-    
+
     @Test
     public void isValid_failsWhenTooShort() {
         assertFalse(Main.isValid("Hz1"));
@@ -122,5 +122,10 @@ class MainTest {
     @Test
     public void isValid_failsWhenNull() {
         assertFalse(Main.isValid(null));
+    }
+
+    @Test
+    public void isValid_passesWhenValid() {
+        assertTrue(Main.isValid("Horizon11!"));
     }
 }
