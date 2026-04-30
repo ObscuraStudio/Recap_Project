@@ -85,4 +85,13 @@ class MainTest {
         assertFalse(Main.containsMixedCase(null));
     }
 
+    @Test
+    public void isCommonPassword_shouldReturnTrue() {
+        assertTrue(Main.isCommonPassword("password"));
+    }
+
+    @Test
+    public void isCommonPassword_shouldReturnFalse() {
+        assertFalse(Main.isCommonPassword("HardPassword123"));
+    }
 }

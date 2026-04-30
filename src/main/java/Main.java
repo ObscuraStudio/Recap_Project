@@ -1,3 +1,5 @@
+import java.util.Set;
+
 public class Main {
 
     public static void main() {
@@ -40,5 +42,22 @@ public class Main {
             }
         }
         return false;
+    }
+
+    private static final Set<String> COMMON_PASSWORDS = Set.of(
+            "password",
+            "passwort1",
+            "password123",
+            "p1234567",
+            "aa34567"
+    );
+
+    public static boolean isCommonPassword(String password) {
+        if (password == null) {
+            return false;
+        }
+        String normalized = password.trim().toLowerCase();
+        return COMMON_PASSWORDS.contains(normalized);
+
     }
 }
