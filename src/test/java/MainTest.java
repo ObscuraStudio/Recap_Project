@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class MainTest {
@@ -162,5 +164,23 @@ class MainTest {
     public void handlesNullSpecials() {
         String pw = Main.generateSecurePassword(8, null);
         assertTrue(Main.isValid(pw));
+    }
+
+    @Test
+    public void getValidationErrors_returnsEmptyForValidPassword() {
+        assertTrue(Main.getValidationErrors("Horizon1").isEmpty());
+    }
+
+    @Test
+    public void getValidationErrors_listsMultipleProblems() {
+        List<String> errors = Main.getValidationErrors("hi");
+        assertEquals(3, errors.size()); // too short, no digit, no mixed case
+    }
+
+    @Test
+    public void getValidationErrors_flagsCommonPassword() {
+        List<String> errors = Main.getValidationErrors("password");
+        assertFalse(errors.isEmpty());
+        assertTrue(errors.stream().anyMatch(e -> e.contains("common")));
     }
 }
