@@ -47,3 +47,4 @@ to `master`. See the badge above for current build status.
 
 - Implemented special characters (ASCII)
 - Implemented a customizable password generator & strength policy
+- Implemented password input with validation check
