@@ -97,6 +97,29 @@ class MainTest {
         assertFalse(Main.isCommonPassword("HardPassword123"));
     }
 
+    // Test cases for containsSpecialChar method
+
+    @Test
+    public void containsSpecialChar_shouldReturnTrue() {
+        assertTrue(Main.containsSpecialChar("Password!"));
+    }
+
+    @Test
+    public void containsSpecialChar_shouldReturnFalse() {
+        assertFalse(Main.containsSpecialChar("password"));
+    }
+
+    @Test
+    public void containsSpecialChar_shouldReturnFalse_whenEmptyString() {
+        assertFalse(Main.containsSpecialChar(""));
+    }
+
+    @Test
+    public void containsSpecialChar_shouldReturnFalse_whenNull() {
+        assertFalse(Main.containsSpecialChar(null));
+    }
+
+
     // Test cases for isValid method
 
     @Test

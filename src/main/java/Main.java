@@ -61,10 +61,30 @@ public class Main {
 
     }
 
+    public static boolean containsSpecialChar(String password) {
+        if (password == null) {
+            return false;
+        }
+        for (char c : password.toCharArray()) {
+            if (c == '!' || c == '@' || c == '#' || c == '$' || c == '%' || c == '^'
+                    || c == '&' || c == '*' || c == '(' || c == ')' || c == '_'
+                    || c == '+' || c == '-' || c == '=' || c == '[' || c == ']'
+                    || c == '{' || c == '}' || c == '|' || c == ';'
+                    || c == ':' || c == '\'' || c == '"' || c == '<' || c == '>'
+                    || c == ',' || c == '.' || c == '/') {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static boolean isValid(String password) {
         return hasMinLength(password, 8)
                 && containsDigit(password)
                 && containsMixedCase(password)
-                && !isCommonPassword(password);
+                && !isCommonPassword(password)
+                && containsSpecialChar(password);
     }
+
+
 }
