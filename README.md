@@ -30,7 +30,7 @@ Produces a JAR in `target/*.jar`.
 After building, run from the project root:
 
 ​```
-java -jar target/Recap_Project-1.0-SNAPSHOT.jar Horizon1
+java -jar target/Recap_Project-1.0-SNAPSHOT.jar your-password-here
 ​```
 
 Or interactively (no argument):
