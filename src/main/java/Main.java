@@ -1,6 +1,5 @@
 import java.security.SecureRandom;
-import java.util.Set;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -9,7 +8,17 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter your password: ");
         String password = scanner.nextLine();
-        System.out.println("Password is " + (isValid(password) ? "valid" : "invalid"));
+
+        List<String> errors = getValidationErrors(password);
+        if (errors.isEmpty()) {
+            System.out.println("Password is valid.");
+        } else {
+            System.out.println("Password is invalid:");
+            for (String error : errors) {
+                System.out.println("  - " + error);
+            }
+        }
+        scanner.close();
     }
 
     public static boolean hasMinLength(String password, int min) {
@@ -110,9 +119,29 @@ public class Main {
     }
 
     public static boolean isValid(String password) {
-        return hasMinLength(password, 8)
-                && containsDigit(password)
-                && containsMixedCase(password)
-                && !isCommonPassword(password);
+        return getValidationErrors(password).isEmpty();
+
+    }
+
+    public static List<String> getValidationErrors(String password) {
+        List<String> errors = new ArrayList<>();
+
+        if (password == null || password.isEmpty()) {
+            errors.add("Password must not be empty.");
+            return errors;
+        }
+        if (!hasMinLength(password, 8)) {
+            errors.add("Password must be at least 8 characters long.");
+        }
+        if (!containsDigit(password)) {
+            errors.add("Password must contain at least one digit (0-9).");
+        }
+        if (!containsMixedCase(password)) {
+            errors.add("Password must contain both uppercase and lowercase letters.");
+        }
+        if (isCommonPassword(password)) {
+            errors.add("Password is on the list of common/weak passwords.");
+        }
+        return errors;
     }
 }
