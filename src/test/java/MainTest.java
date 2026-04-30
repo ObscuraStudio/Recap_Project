@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class MainTest {
 
     // Test cases for hasMinLength method
+
     @Test
     public void hasMinLength_stringWith8_shouldReturnTrue() {
         assertTrue(Main.hasMinLength("password", 8));
@@ -56,4 +57,8 @@ class MainTest {
     public void containsDigit_noDigit_shouldReturnFalse() {
         assertFalse(Main.containsDigit("password"));
     }
+
+    // Test cases for hasUpperCase and hasLowerCase method
+    
+
 }
