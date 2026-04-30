@@ -22,5 +22,23 @@ public class Main {
         }
         return false;
     }
-}
 
+    public static boolean containsMixedCase(String password) {
+        if (password == null) {
+            return false;
+        }
+        boolean hasUpper = false;
+        boolean hasLower = false;
+        for (char c : password.toCharArray()) {
+            if (c >= 'A' && c <= 'Z') {
+                hasUpper = true;
+            } else if (c >= 'a' && c <= 'z') {
+                hasLower = true;
+            }
+            if (hasUpper && hasLower) {
+                return true;
+            }
+        }
+        return false;
+    }
+}

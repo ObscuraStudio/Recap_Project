@@ -58,7 +58,31 @@ class MainTest {
         assertFalse(Main.containsDigit("password"));
     }
 
-    // Test cases for hasUpperCase and hasLowerCase method
-    
+    // Test cases for containsMixedCase method
+
+    @Test
+    public void containsMixedCase_onlyUpperCase_shouldReturnFalse() {
+        assertFalse(Main.containsMixedCase("PASSWORD"));
+    }
+
+    @Test
+    public void containsMixedCase_onlyLowerCase_shouldReturnFalse() {
+        assertFalse(Main.containsMixedCase("password"));
+    }
+
+    @Test
+    public void containsMixedCase_mixedCase_shouldReturnTrue() {
+        assertTrue(Main.containsMixedCase("Password"));
+    }
+
+    @Test
+    public void containsMixedCase_onlyOneChar_shouldReturnFalse() {
+        assertFalse(Main.containsMixedCase("p"));
+    }
+
+    @Test
+    public void containsMixedCase_nullSafe_shouldReturnFalse() {
+        assertFalse(Main.containsMixedCase(null));
+    }
 
 }
