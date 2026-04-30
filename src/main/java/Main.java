@@ -4,10 +4,18 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Welcome to the Password Validator!");
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter your password: ");
-        String password = scanner.nextLine();
+        String password;
+
+        if (args.length > 0) {
+            password = args[0];
+            System.out.println("Validating password from argument...");
+        } else {
+            System.out.println("Welcome to the Password Validator!");
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Enter your password: ");
+            password = scanner.nextLine();
+            scanner.close();
+        }
 
         List<String> errors = getValidationErrors(password);
         if (errors.isEmpty()) {
@@ -18,7 +26,6 @@ public class Main {
                 System.out.println("  - " + error);
             }
         }
-        scanner.close();
     }
 
     public static boolean hasMinLength(String password, int min) {

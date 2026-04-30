@@ -25,12 +25,19 @@ Must-Have Criteria:
 
 Produces a JAR in `target/*.jar`.
 
-## Usage Example
+## Usage
 
-```java
-boolean ok = Main.isValid("Horizon1"); // true
-boolean no = Main.isValid("password"); // false (common password)
-```
+After building, run from the project root:
+
+​```
+java -jar target/Recap_Project-1.0-SNAPSHOT.jar Horizon1
+​```
+
+Or interactively (no argument):
+
+​```
+java -jar target/Recap_Project-1.0-SNAPSHOT.jar
+​```
 
 ## Project Structure
 
