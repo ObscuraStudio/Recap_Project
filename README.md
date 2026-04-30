@@ -19,9 +19,9 @@ Must-Have Criteria:
 
 **Requirements:** Java 25+, Maven 3.8+
 
-**Run tests locally:** mvn clean verify
+**Run tests locally:** `mvn clean verify`
 
-**Build artifact:** mvn package
+**Build artifact:** `mvn package`
 
 Produces a JAR in `target/*.jar`.
 
