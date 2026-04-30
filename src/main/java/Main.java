@@ -5,17 +5,11 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        String[] testPasswords = {
-                "password",      // common — invalid
-                "Horizon1",      // valid
-                "short1A",       // too short — invalid
-                "PASSWORD123",   // no lowercase — invalid
-                "Horizont"       // no digit — invalid
-        };
-
-        for (String pw : testPasswords) {
-            System.out.println(pw + " → " + (isValid(pw) ? "valid" : "invalid"));
-        }
+        System.out.println("Welcome to the Password Validator!");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter your password: ");
+        String password = scanner.nextLine();
+        System.out.println("Password is " + (isValid(password) ? "valid" : "invalid"));
     }
 
     public static boolean hasMinLength(String password, int min) {
