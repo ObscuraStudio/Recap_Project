@@ -44,3 +44,6 @@ GitHub Actions runs `mvn clean verify` on every push and pull request
 to `master`. See the badge above for current build status.
 
 ## Bonus Scope
+
+- Implemented special characters (ASCII)
+- Implemented a customizable password generator & strength policy

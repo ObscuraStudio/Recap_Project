@@ -128,4 +128,39 @@ class MainTest {
     public void isValid_passesWhenValid() {
         assertTrue(Main.isValid("Horizon11!"));
     }
+
+    // Test cases for generateSecurePassword method
+
+    @Test
+    public void generatedPasswordHasRequestedLength() {
+        String pw = Main.generateSecurePassword(12, "!@#$");
+        assertEquals(12, pw.length());
+    }
+
+    @Test
+    public void generatedPasswordPassesValidation() {
+        for (int i = 0; i < 100; i++) {
+            String pw = Main.generateSecurePassword(8, "!@#$");
+            assertTrue(Main.isValid(pw), "Failed for: " + pw);
+        }
+    }
+
+    @Test
+    public void generatedPasswordIsRandom() {
+        String pw1 = Main.generateSecurePassword(16, "!@#$");
+        String pw2 = Main.generateSecurePassword(16, "!@#$");
+        assertNotEquals(pw1, pw2);
+    }
+
+    @Test
+    public void rejectsLengthBelowMinimum() {
+        assertThrows(IllegalArgumentException.class,
+                () -> Main.generateSecurePassword(5, "!@#$"));
+    }
+
+    @Test
+    public void handlesNullSpecials() {
+        String pw = Main.generateSecurePassword(8, null);
+        assertTrue(Main.isValid(pw));
+    }
 }
