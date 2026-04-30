@@ -6,28 +6,29 @@ public class Main {
     // Main method
 
     public static void main(String[] args) {
-        String password;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Welcome to the Password Validator!");
+        System.out.print("Do you want to generate a password? (Y/N): ");
+        String answer = scanner.nextLine().trim().toLowerCase();
 
-        if (args.length > 0) {
-            password = args[0];
-            System.out.println("Validating password from argument...");
+        if (answer.equals("y") || answer.equals("yes")) {
+            String generated = generateSecurePassword(12, "!@#$%&*?");
+            System.out.println("Generated password: " + generated);
         } else {
-            System.out.println("Welcome to the Password Validator!");
-            Scanner scanner = new Scanner(System.in);
             System.out.print("Enter your password: ");
-            password = scanner.nextLine();
-            scanner.close();
-        }
-
-        List<String> errors = getValidationErrors(password);
-        if (errors.isEmpty()) {
-            System.out.println("Password is valid.");
-        } else {
-            System.out.println("Password is invalid:");
-            for (String error : errors) {
-                System.out.println("  - " + error);
+            String password = scanner.nextLine();
+            List<String> errors = getValidationErrors(password);
+            if (errors.isEmpty()) {
+                System.out.println("Password is valid.");
+            } else {
+                System.out.println("Password is invalid:");
+                for (String error : errors) {
+                    System.out.println("  - " + error);
+                }
             }
         }
+
+        scanner.close();
     }
 
     // Start of validator methods
