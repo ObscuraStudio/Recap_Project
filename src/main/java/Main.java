@@ -60,4 +60,11 @@ public class Main {
         return COMMON_PASSWORDS.contains(normalized);
 
     }
+
+    public static boolean isValid(String password) {
+        return hasMinLength(password, 8)
+                && containsDigit(password)
+                && containsMixedCase(password)
+                && !isCommonPassword(password);
+    }
 }

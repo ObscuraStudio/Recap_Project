@@ -85,6 +85,8 @@ class MainTest {
         assertFalse(Main.containsMixedCase(null));
     }
 
+    // Test cases for isCommonPassword method
+
     @Test
     public void isCommonPassword_shouldReturnTrue() {
         assertTrue(Main.isCommonPassword("password"));
@@ -93,5 +95,32 @@ class MainTest {
     @Test
     public void isCommonPassword_shouldReturnFalse() {
         assertFalse(Main.isCommonPassword("HardPassword123"));
+    }
+
+    // Test cases for isValid method
+    
+    @Test
+    public void isValid_failsWhenTooShort() {
+        assertFalse(Main.isValid("Hz1"));
+    }
+
+    @Test
+    public void isValid_failsWhenNoDigit() {
+        assertFalse(Main.isValid("Horizont"));
+    }
+
+    @Test
+    public void isValid_failsWhenNoMixedCase() {
+        assertFalse(Main.isValid("horizon11"));
+    }
+
+    @Test
+    public void isValid_failsWhenCommon() {
+        assertFalse(Main.isValid("password"));
+    }
+
+    @Test
+    public void isValid_failsWhenNull() {
+        assertFalse(Main.isValid(null));
     }
 }
