@@ -3,6 +3,8 @@ import java.util.*;
 
 public class Main {
 
+    // Main method
+
     public static void main(String[] args) {
         String password;
 
@@ -27,6 +29,8 @@ public class Main {
             }
         }
     }
+
+    // Start of validator methods
 
     public static boolean hasMinLength(String password, int min) {
         if (password == null) {
